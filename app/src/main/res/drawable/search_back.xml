@@ -9,11 +9,7 @@
                 <corners
                     android:radius="35dp"/>
 
-                <stroke
-                    android:width="3dp"
-                    android:color="#FFFFFF"
-                    android:dashGap="2dp"
-                    android:dashWidth="0dp"/>
+
 
             </shape>
         </item>
@@ -24,6 +20,12 @@
                 android:shape="rectangle">
                 <solid
                     android:color="#DFD5D5D2"/>
+                <stroke
+                    android:dashGap="1dp"
+                    android:width="2dp"
+                    android:color="@color/black"
+                    android:dashWidth="20dp"/>
+
                 <corners
                     android:radius="35dp"/>
 
