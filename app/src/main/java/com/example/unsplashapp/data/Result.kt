@@ -1,6 +1,6 @@
 package com.example.unsplashapp.data
 
-data class MainObjectClassItem(
+data class Result(
     val alt_description: String,
     val blur_hash: String,
     val categories: List<Any>,
@@ -12,12 +12,9 @@ data class MainObjectClassItem(
     val id: String,
     val liked_by_user: Boolean,
     val likes: Int,
-    val links: Links,
     val promoted_at: String,
-    val sponsorship: Sponsorship,
-    val topic_submissions: TopicSubmissions,
+    val sponsorship: Any,
     val updated_at: String,
-    val urls: Urls,
-    val user: User,
+    val urls: UrlsX,
     val width: Int
 )

@@ -1,3 +1,7 @@
 package com.example.unsplashapp.data
 
-class MainObjectClass : ArrayList<MainObjectClassItem>()
+data class MainObjectClass(
+    val results: List<Result>,
+    val total: Int,
+    val total_pages: Int
+)
