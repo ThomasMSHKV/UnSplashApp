@@ -1,6 +1,7 @@
 package com.example.unsplashapp.data
 
 import android.app.DownloadManager
+import com.example.unsplashapp.presentor.view.SearchFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -8,7 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import kotlin.coroutines.CoroutineContext
 
-class ApiRepository: CoroutineScope {
+class ApiRepository : CoroutineScope {
     override val coroutineContext: CoroutineContext = Dispatchers.IO
 
     private val picturesApi: PicturesApi = Retrofit.Builder()
@@ -17,7 +18,13 @@ class ApiRepository: CoroutineScope {
         .build()
         .create(PicturesApi::class.java)
 
-    fun getData(query: String) = async {
-        picturesApi.getPictures(page = 1, query = "", clientId = "DUBVa4jfDLSp5x-fltbelabCHZVE854DKQTyqlK6Pts")
+    fun getData() = async {
+        picturesApi.getPictures(
+            page = 1,
+            query = SearchFragment.just,
+            clientId = "DUBVa4jfDLSp5x-fltbelabCHZVE854DKQTyqlK6Pts")
+            .execute()
+            .body()
+            ?.results
     }
 }

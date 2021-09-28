@@ -5,49 +5,37 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.unsplashapp.R
 import com.example.unsplashapp.data.ApiRepository
 import com.example.unsplashapp.databinding.FragmentSearchBinding
 import kotlinx.coroutines.*
+import kotlin.concurrent.fixedRateTimer
 import kotlin.coroutines.CoroutineContext
 
 
-class SearchFragment : Fragment(), CoroutineScope{
-    override val coroutineContext: CoroutineContext = Dispatchers.Main
-    private var _binding: FragmentSearchBinding? = null
-    private val binding get() = _binding!!
+class SearchFragment : Fragment(R.layout.fragment_search) {
+    private lateinit var binding: FragmentSearchBinding
 
-    lateinit var apiRepository: ApiRepository
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentSearchBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
 
+    companion object {
+        var just = ""
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        getPictures()
-    }
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentSearchBinding.bind(view)
 
 
-    fun getPictures(){
-        binding.searchBottom.setOnClickListener{
-            GlobalScope.launch(Dispatchers.IO){
-                val getPicResult = apiRepository.getData(binding.searchComponent.text.toString()).await()
-
-                withContext(Dispatchers.Main){
-                    if (getPicResult != null){
-
-                    }
-
-                }
-
-            }
+        binding.searchBottom.setOnClickListener {
+            just = binding.searchComponent.text.toString()
+            fragmentManager?.beginTransaction()
+                ?.replace(R.id.fragmentContainer,OpenSearchFragment())
+                ?.commit()
         }
 
     }
 
+
 }
+

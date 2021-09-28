@@ -1,6 +1,5 @@
 package com.example.unsplashapp.domain
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,20 +8,26 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.unsplashapp.R
 import com.example.unsplashapp.data.MainObjectClass
+import com.example.unsplashapp.data.Result
 
-class PicturesAdapter(var context: Context) : RecyclerView.Adapter<PicturesAdapter.ViewHolder>() {
-    val itemPict = mutableListOf<MainObjectClass>()
+class PicturesAdapter() : RecyclerView.Adapter<PicturesAdapter.ViewHolder>() {
+
+    var itemPict = mutableListOf<Result>()
+
+    fun setData(list: MutableList<Result>) {
+        itemPict.addAll(list)
+        notifyDataSetChanged()
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.photo_item, parent,false)
-        val  holder = ViewHolder(view)
-
-        return holder
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.photo_item, parent, false)
+        return ViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Glide.with(holder.itemView).load(itemPict[position].results[position].urls).into(holder.image)
+        Glide.with(holder.itemView.context).load(itemPict[position].urls.small).into(holder.image)
     }
 
     override fun getItemCount(): Int {
