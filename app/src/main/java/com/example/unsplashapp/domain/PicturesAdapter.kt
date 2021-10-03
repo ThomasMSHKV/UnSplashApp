@@ -10,7 +10,8 @@ import com.example.unsplashapp.R
 import com.example.unsplashapp.data.MainObjectClass
 import com.example.unsplashapp.data.Result
 
-class PicturesAdapter() : RecyclerView.Adapter<PicturesAdapter.ViewHolder>() {
+class PicturesAdapter(private val callback: PicturesCallback) :
+    RecyclerView.Adapter<PicturesAdapter.ViewHolder>() {
 
     var itemPict = mutableListOf<Result>()
 
@@ -23,7 +24,18 @@ class PicturesAdapter() : RecyclerView.Adapter<PicturesAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.photo_item, parent, false)
-        return ViewHolder(itemView)
+        val holder = ViewHolder(itemView)
+
+        holder.image.setOnClickListener {
+            val pos = holder.bindingAdapterPosition
+            if (pos != RecyclerView.NO_POSITION){
+                callback.onItemClick(itemPict[pos])
+
+            }
+
+        }
+
+        return holder
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
