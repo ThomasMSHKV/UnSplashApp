@@ -13,6 +13,7 @@ import com.example.unsplashapp.data.MainObjectClass
 import com.example.unsplashapp.data.Result
 import com.example.unsplashapp.databinding.FragmentOpenSearchBinding
 import com.example.unsplashapp.domain.PicturesAdapter
+import com.example.unsplashapp.domain.PicturesCallback
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,6 +25,7 @@ class OpenSearchFragment : Fragment(R.layout.fragment_open_search), CoroutineSco
     override val coroutineContext: CoroutineContext = Dispatchers.Main
 
     private lateinit var binding: FragmentOpenSearchBinding
+    private lateinit var picturesCallback: PicturesCallback
     private lateinit var picAdapter: PicturesAdapter
     private var picturesList: MutableList<Result>? = null
 
@@ -31,7 +33,7 @@ class OpenSearchFragment : Fragment(R.layout.fragment_open_search), CoroutineSco
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentOpenSearchBinding.bind(view)
-        picAdapter = PicturesAdapter()
+        picAdapter = PicturesAdapter(picturesCallback)
         binding.recyclerFragmentOpen.adapter = picAdapter
         binding.recyclerFragmentOpen.layoutManager = GridLayoutManager(requireContext(), 3)
         binding.recyclerFragmentOpen.setHasFixedSize(true)

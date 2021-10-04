@@ -30,6 +30,8 @@ class PicturesAdapter(private val callback: PicturesCallback) :
             val pos = holder.bindingAdapterPosition
             if (pos != RecyclerView.NO_POSITION){
                 callback.onItemClick(itemPict[pos])
+                
+
 
             }
 
