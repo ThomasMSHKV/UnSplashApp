@@ -57,7 +57,7 @@ class OpenSearchFragment : Fragment(R.layout.fragment_open_search), CoroutineSco
 
         }
 
-        override fun onItemClick(result: Result) {
+        override fun onItemClick(result: Char) {
         }
     }
 }

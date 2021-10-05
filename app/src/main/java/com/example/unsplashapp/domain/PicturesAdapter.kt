@@ -7,13 +7,14 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.unsplashapp.R
-import com.example.unsplashapp.data.MainObjectClass
 import com.example.unsplashapp.data.Result
+import com.example.unsplashapp.view.OrdersCallback
 
-class PicturesAdapter(private val callback: PicturesCallback) :
+class PicturesAdapter(private val callback: OrdersCallback) :
     RecyclerView.Adapter<PicturesAdapter.ViewHolder>() {
 
     var itemPict = mutableListOf<Result>()
+    private var count: Int = 0
 
     fun setData(list: MutableList<Result>) {
         itemPict.addAll(list)
@@ -27,13 +28,7 @@ class PicturesAdapter(private val callback: PicturesCallback) :
         val holder = ViewHolder(itemView)
 
         holder.image.setOnClickListener {
-            val pos = holder.bindingAdapterPosition
-            if (pos != RecyclerView.NO_POSITION){
-                callback.onItemClick(itemPict[pos])
-                
-
-
-            }
+           callback.openFragment(itemPict[holder.adapterPosition].id,count)
 
         }
 
