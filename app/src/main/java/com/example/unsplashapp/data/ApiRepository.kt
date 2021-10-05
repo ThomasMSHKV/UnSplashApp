@@ -26,11 +26,6 @@ class ApiRepository : CoroutineScope {
             .body()
             ?.results
 
-        fun getPictureId(id: Int) = async {
-            picturesApi.getPictures(id)
-                .execute()
-                .body()
-                ?.results
-        }
+
     }
 }
