@@ -4,10 +4,13 @@ import com.example.unsplashapp.data.Result
 
 interface OpenPictureContract {
 
-    interface View{
+    interface View {
         fun setData(result: Result)
 
     }
 
+    interface Presenter {
+        fun getPictures(id: Int)
+    }
 
 }

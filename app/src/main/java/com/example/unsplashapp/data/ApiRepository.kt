@@ -1,7 +1,6 @@
 package com.example.unsplashapp.data
 
-import android.app.DownloadManager
-import com.example.unsplashapp.presentor.view.SearchFragment
+import com.example.unsplashapp.SearchFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async

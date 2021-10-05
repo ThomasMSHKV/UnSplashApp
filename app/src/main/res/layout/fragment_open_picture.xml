@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentor.view.OpenPicture"
+    tools:context=".presentor.view.OpenPictureFragment"
     android:background="#C5C3C3">
 
     <TextView

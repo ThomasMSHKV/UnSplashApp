@@ -11,7 +11,7 @@ import com.example.unsplashapp.data.Result
 import com.example.unsplashapp.databinding.FragmentOpenPictureBinding
 
 
-class OpenPicture : Fragment(R.layout.fragment_open_picture), OpenPictureContract.View {
+class OpenPictureFragment : Fragment(R.layout.fragment_open_picture), OpenPictureContract.View {
     private var _binding: FragmentOpenPictureBinding? = null
     private val  binding get() = _binding!!
 

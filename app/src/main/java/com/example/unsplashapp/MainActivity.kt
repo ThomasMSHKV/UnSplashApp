@@ -2,7 +2,6 @@ package com.example.unsplashapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.unsplashapp.presentor.view.SearchFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -10,7 +9,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         supportFragmentManager.beginTransaction()
-            .add(R.id.fragmentContainer,SearchFragment())
+            .add(R.id.fragmentContainer, SearchFragment())
             .commit()
     }
 }
