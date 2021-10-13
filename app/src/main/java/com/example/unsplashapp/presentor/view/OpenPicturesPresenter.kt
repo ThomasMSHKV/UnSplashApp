@@ -12,6 +12,7 @@ class OpenPicturesPresenter(val view: OpenPictureContract.View) : OpenPictureCon
     private val repository = ApiRepository()
     lateinit var result: Result
 
+
     override fun getPictures(id: String?) {
         GlobalScope.launch(Dispatchers.IO){
             result = repository.getDataPic(id).await()!!

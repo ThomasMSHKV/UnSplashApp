@@ -15,6 +15,7 @@ interface PicturesApi {
 
     ): Call<MainObjectClass>
 
+    @GET("search/photos")
     fun getPicId(
         @Query("page") page: Int,
         @Query("query") query: String,

@@ -39,7 +39,6 @@ class OpenPictureFragment : Fragment(R.layout.fragment_open_picture), OpenPictur
     }
 
     override fun setData(result: Result) {
-        Log.e("OPEN PICTURES", result.id)
         Glide.with(requireContext()).load(result.id).centerCrop().into(binding.imageOpen)
     }
 }

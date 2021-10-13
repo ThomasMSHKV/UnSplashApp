@@ -37,7 +37,7 @@ class ApiRepository : CoroutineScope {
         )
             .execute()
             .body()
-            ?.result?.id
+            ?.result
     }
 
 
