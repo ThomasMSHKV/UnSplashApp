@@ -1,5 +1,6 @@
 package com.example.unsplashapp.domain
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +28,9 @@ class PicturesAdapter(private val callback: OrdersCallback) :
             .inflate(R.layout.photo_item, parent, false)
         val holder = ViewHolder(itemView)
 
+
         holder.image.setOnClickListener {
+            Log.e("ERROR PIC", "NO OPEN")
            callback.openFragment(itemPict[holder.adapterPosition].id,count)
 
         }

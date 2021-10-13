@@ -1,6 +1,7 @@
 package com.example.unsplashapp.presentor.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +14,18 @@ import com.example.unsplashapp.databinding.FragmentOpenPictureBinding
 
 class OpenPictureFragment : Fragment(R.layout.fragment_open_picture), OpenPictureContract.View {
     private var _binding: FragmentOpenPictureBinding? = null
-    private val  binding get() = _binding!!
+    private val binding get() = _binding!!
+    private var count = 0
+
+    private lateinit var presenter: OpenPicturesPresenter
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        presenter = OpenPicturesPresenter(this)
+        count = arguments?.getInt("number")!!
+        presenter.getPictures(arguments?.getInt("key")!!)
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +38,7 @@ class OpenPictureFragment : Fragment(R.layout.fragment_open_picture), OpenPictur
     }
 
     override fun setData(result: Result) {
+        Log.e("OPEN PICTURES", result.id)
         Glide.with(requireContext()).load(result.id).centerCrop().into(binding.imageOpen)
     }
 }

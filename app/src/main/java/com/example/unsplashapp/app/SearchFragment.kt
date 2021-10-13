@@ -1,8 +1,9 @@
-package com.example.unsplashapp
+package com.example.unsplashapp.app
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import com.example.unsplashapp.R
 import com.example.unsplashapp.databinding.FragmentSearchBinding
 
 

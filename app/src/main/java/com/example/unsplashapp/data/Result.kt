@@ -1,6 +1,7 @@
 package com.example.unsplashapp.data
 
-data class Result(
+data class
+Result(
     val alt_description: String,
     val blur_hash: String,
     val categories: List<Any>,

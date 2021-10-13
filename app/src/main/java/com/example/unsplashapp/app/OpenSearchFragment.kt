@@ -1,14 +1,17 @@
-package com.example.unsplashapp
+package com.example.unsplashapp.app
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.unsplashapp.R
 import com.example.unsplashapp.data.ApiRepository
 import com.example.unsplashapp.data.Result
 import com.example.unsplashapp.databinding.FragmentOpenSearchBinding
 import com.example.unsplashapp.domain.PicturesAdapter
-import com.example.unsplashapp.domain.PicturesCallback
+import com.example.unsplashapp.presentor.view.OpenPictureFragment
+import com.example.unsplashapp.view.OrdersCallback
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,8 +31,6 @@ class OpenSearchFragment : Fragment(R.layout.fragment_open_search), CoroutineSco
         binding = FragmentOpenSearchBinding.bind(view)
 
         init()
-
-
     }
 
     fun init() {
@@ -52,13 +53,26 @@ class OpenSearchFragment : Fragment(R.layout.fragment_open_search), CoroutineSco
                 ?.commit()
         }
     }
-    val callback = object: PicturesCallback {
+    val callback = object: OrdersCallback {
         override fun setList(list: List<Result>) {
 
         }
 
-        override fun onItemClick(result: Char) {
+        override fun openFragment(picture_id: String, number: Int) {
+            Log.e("OpenSearch", "OPEN")
+            val fragment = OpenPictureFragment()
+            val bundle = Bundle()
+            bundle.putString("key", picture_id)
+            bundle.putInt("number", number)
+            fragment.arguments = bundle
+            fragmentManager?.beginTransaction()
+                ?.replace(R.id.fragmentContainer, fragment)
+                ?.addToBackStack(null)
+                ?.commit()
+
         }
+
+
     }
 }
 

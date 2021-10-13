@@ -1,6 +1,6 @@
 package com.example.unsplashapp.data
 
-import com.example.unsplashapp.SearchFragment
+import com.example.unsplashapp.app.SearchFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -17,15 +17,17 @@ class ApiRepository : CoroutineScope {
         .build()
         .create(PicturesApi::class.java)
 
-    fun getData() = async {
+    fun getData(id: String) = async {
         picturesApi.getPictures(
             page = 1,
             query = SearchFragment.just,
-            clientId = "DUBVa4jfDLSp5x-fltbelabCHZVE854DKQTyqlK6Pts")
+            clientId = "DUBVa4jfDLSp5x-fltbelabCHZVE854DKQTyqlK6Pts",
+            id
+        )
             .execute()
             .body()
             ?.results
-
-
     }
+
+
 }

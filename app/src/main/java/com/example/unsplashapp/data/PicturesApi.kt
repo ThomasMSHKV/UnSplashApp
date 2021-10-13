@@ -11,7 +11,8 @@ interface PicturesApi {
     fun getPictures(
         @Query("page") page: Int,
         @Query("query") query: String,
-        @Query("client_id") clientId: String
+        @Query("client_id") clientId: String,
+    id: String
 
     ): Call<MainObjectClass>
 
