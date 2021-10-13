@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.unsplashapp.R
 import com.example.unsplashapp.data.Result
-import com.example.unsplashapp.view.OrdersCallback
+import com.example.unsplashapp.presentor.view.OrdersCallback
 
 class PicturesAdapter(private val callback: OrdersCallback) :
     RecyclerView.Adapter<PicturesAdapter.ViewHolder>() {

@@ -1,4 +1,4 @@
-package com.example.unsplashapp.view
+package com.example.unsplashapp.presentor.view
 
 import com.example.unsplashapp.data.Result
 

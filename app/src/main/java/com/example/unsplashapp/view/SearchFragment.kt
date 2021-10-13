@@ -1,4 +1,4 @@
-package com.example.unsplashapp.app
+package com.example.unsplashapp.view
 
 import android.os.Bundle
 import android.view.View

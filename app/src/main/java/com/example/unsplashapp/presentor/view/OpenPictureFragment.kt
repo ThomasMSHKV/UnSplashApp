@@ -22,8 +22,9 @@ class OpenPictureFragment : Fragment(R.layout.fragment_open_picture), OpenPictur
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter = OpenPicturesPresenter(this)
+
         count = arguments?.getInt("number")!!
-        presenter.getPictures(arguments?.getInt("key")!!)
+        presenter.getPictures(arguments?.getString("key")!!)
 
     }
 

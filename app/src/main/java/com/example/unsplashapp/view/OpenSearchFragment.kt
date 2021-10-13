@@ -1,4 +1,4 @@
-package com.example.unsplashapp.app
+package com.example.unsplashapp.view
 
 import android.os.Bundle
 import android.util.Log
@@ -11,7 +11,7 @@ import com.example.unsplashapp.data.Result
 import com.example.unsplashapp.databinding.FragmentOpenSearchBinding
 import com.example.unsplashapp.domain.PicturesAdapter
 import com.example.unsplashapp.presentor.view.OpenPictureFragment
-import com.example.unsplashapp.view.OrdersCallback
+import com.example.unsplashapp.presentor.view.OrdersCallback
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -42,7 +42,7 @@ class OpenSearchFragment : Fragment(R.layout.fragment_open_search), CoroutineSco
         val repository = ApiRepository()
 
         launch {
-            picturesList = repository.getData().await() as MutableList<Result>?
+            picturesList = repository.getData(id = "").await() as MutableList<Result>?
             picturesList?.let {
                 picAdapter.setData(it)
             }

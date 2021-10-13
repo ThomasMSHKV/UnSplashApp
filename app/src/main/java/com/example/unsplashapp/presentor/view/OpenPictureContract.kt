@@ -10,7 +10,7 @@ interface OpenPictureContract {
     }
 
     interface Presenter {
-        fun getPictures(id: String)
+        fun getPictures(id: String?)
     }
 
 }

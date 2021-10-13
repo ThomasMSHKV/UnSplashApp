@@ -2,7 +2,6 @@
     <string name="app_name">UnSplashApp</string>
     <string name="photo_search">Photo search</string>
     <string name="search_text_hint">search</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="searching_results">Searching results</string>
     <string name="open_picture">Open picture</string>

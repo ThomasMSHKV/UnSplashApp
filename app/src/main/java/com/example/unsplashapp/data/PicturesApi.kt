@@ -12,9 +12,15 @@ interface PicturesApi {
         @Query("page") page: Int,
         @Query("query") query: String,
         @Query("client_id") clientId: String,
-    id: String
 
     ): Call<MainObjectClass>
+
+    fun getPicId(
+        @Query("page") page: Int,
+        @Query("query") query: String,
+        @Query("client_id") clientId: String,
+        id: String?
+    ): Call<ApiGood.Good>
 
 
 }

@@ -1,4 +1,4 @@
-package com.example.unsplashapp.app
+package com.example.unsplashapp.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
