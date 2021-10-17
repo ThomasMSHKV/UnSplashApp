@@ -13,7 +13,7 @@ interface PicturesApi {
         @Query("query") query: String,
         @Query("client_id") clientId: String,
 
-    ): Call<MainObjectClass>
+        ): Call<MainObjectClass>
 
     @GET("search/photos")
     fun getPicId(
@@ -21,6 +21,7 @@ interface PicturesApi {
         @Query("query") query: String,
         @Query("client_id") clientId: String,
         id: String?
+
     ): Call<ApiGood.Good>
 
 

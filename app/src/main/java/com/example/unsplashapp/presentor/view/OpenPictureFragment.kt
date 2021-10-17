@@ -12,7 +12,7 @@ import com.example.unsplashapp.data.Result
 import com.example.unsplashapp.databinding.FragmentOpenPictureBinding
 
 
-class OpenPictureFragment : Fragment(R.layout.fragment_open_picture), OpenPictureContract.View {
+class OpenPictureFragment(val urls: String) : Fragment(R.layout.fragment_open_picture), OpenPictureContract.View {
     private var _binding: FragmentOpenPictureBinding? = null
     private val binding get() = _binding!!
     private var count = 0
@@ -39,6 +39,6 @@ class OpenPictureFragment : Fragment(R.layout.fragment_open_picture), OpenPictur
     }
 
     override fun setData(result: Result) {
-        Glide.with(requireContext()).load(result.id).centerCrop().into(binding.imageOpen)
+        Glide.with(requireContext()).load(urls).centerCrop().into(binding.imageOpen)
     }
 }

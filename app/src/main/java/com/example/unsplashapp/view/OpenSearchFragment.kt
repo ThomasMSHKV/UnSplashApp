@@ -58,11 +58,11 @@ class OpenSearchFragment : Fragment(R.layout.fragment_open_search), CoroutineSco
 
         }
 
-        override fun openFragment(picture_id: String, number: Int) {
+        override fun openFragment(urls: String, number: Int) {
             Log.e("OpenSearch", "OPEN")
             val fragment = OpenPictureFragment()
             val bundle = Bundle()
-            bundle.putString("key", picture_id)
+            bundle.putString("key", urls)
             bundle.putInt("number", number)
             fragment.arguments = bundle
             fragmentManager?.beginTransaction()

@@ -22,6 +22,7 @@ class ApiRepository : CoroutineScope {
             page = 1,
             query = SearchFragment.just,
             clientId = "DUBVa4jfDLSp5x-fltbelabCHZVE854DKQTyqlK6Pts"
+
         )
             .execute()
             .body()
@@ -39,6 +40,4 @@ class ApiRepository : CoroutineScope {
             .body()
             ?.result
     }
-
-
 }

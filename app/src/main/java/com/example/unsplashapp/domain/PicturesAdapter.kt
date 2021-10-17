@@ -31,7 +31,7 @@ class PicturesAdapter(private val callback: OrdersCallback) :
 
         holder.image.setOnClickListener {
             Log.e("ERROR PIC", "NO OPEN")
-           callback.openFragment(itemPict[holder.adapterPosition].id,count)
+           callback.openFragment(itemPict[holder.adapterPosition].,count)
 
         }
 
