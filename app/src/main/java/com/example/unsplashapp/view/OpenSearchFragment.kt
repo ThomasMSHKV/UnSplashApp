@@ -12,13 +12,14 @@ import com.example.unsplashapp.databinding.FragmentOpenSearchBinding
 import com.example.unsplashapp.domain.PicturesAdapter
 import com.example.unsplashapp.presentor.view.OpenPictureFragment
 import com.example.unsplashapp.presentor.view.OrdersCallback
+import com.example.unsplashapp.presentor.view.PicturesContract
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 
-class OpenSearchFragment : Fragment(R.layout.fragment_open_search), CoroutineScope {
+class OpenSearchFragment : Fragment(R.layout.fragment_open_search), PicturesContract.View, CoroutineScope {
     override val coroutineContext: CoroutineContext = Dispatchers.Main
 
     private lateinit var binding: FragmentOpenSearchBinding
@@ -53,18 +54,28 @@ class OpenSearchFragment : Fragment(R.layout.fragment_open_search), CoroutineSco
                 ?.commit()
         }
     }
+
+    override fun setData(result: List<Result>) {
+        picAdapter.setData(result as MutableList<Result>)
+    }
+
+    override fun replaceData(result: List<Result>) {
+        picAdapter.replace(result)
+
+    }
+
     val callback = object: OrdersCallback {
         override fun setList(list: List<Result>) {
 
         }
 
-        override fun openFragment(urls: String, number: Int) {
+        override fun openFragment(result: Result) {
             Log.e("OpenSearch", "OPEN")
             val fragment = OpenPictureFragment()
             val bundle = Bundle()
-            bundle.putString("key", urls)
-            bundle.putInt("number", number)
+            bundle.putParcelable("key", result)
             fragment.arguments = bundle
+
             fragmentManager?.beginTransaction()
                 ?.replace(R.id.fragmentContainer, fragment)
                 ?.addToBackStack(null)
@@ -74,6 +85,7 @@ class OpenSearchFragment : Fragment(R.layout.fragment_open_search), CoroutineSco
 
 
     }
+
 }
 
 

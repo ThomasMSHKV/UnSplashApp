@@ -15,11 +15,16 @@ class PicturesAdapter(private val callback: OrdersCallback) :
     RecyclerView.Adapter<PicturesAdapter.ViewHolder>() {
 
     var itemPict = mutableListOf<Result>()
-    private var count: Int = 0
 
     fun setData(list: MutableList<Result>) {
         itemPict.addAll(list)
         notifyDataSetChanged()
+    }
+
+    fun replace(result: List<Result>) {
+        itemPict.addAll(result)
+        notifyDataSetChanged()
+
     }
 
 
@@ -30,8 +35,8 @@ class PicturesAdapter(private val callback: OrdersCallback) :
 
 
         holder.image.setOnClickListener {
-            Log.e("ERROR PIC", "NO OPEN")
-           callback.openFragment(itemPict[holder.adapterPosition].,count)
+            Log.e("ERROR PIC", itemPict[holder.adapterPosition].urls.regular)
+            callback.openFragment(itemPict[holder.adapterPosition])
 
         }
 
@@ -39,7 +44,7 @@ class PicturesAdapter(private val callback: OrdersCallback) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Glide.with(holder.itemView.context).load(itemPict[position].urls.small).into(holder.image)
+        Glide.with(holder.itemView.context).load(itemPict[position].urls.regular).into(holder.image)
     }
 
     override fun getItemCount(): Int {

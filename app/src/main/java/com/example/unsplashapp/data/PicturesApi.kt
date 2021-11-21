@@ -14,15 +14,4 @@ interface PicturesApi {
         @Query("client_id") clientId: String,
 
         ): Call<MainObjectClass>
-
-    @GET("search/photos")
-    fun getPicId(
-        @Query("page") page: Int,
-        @Query("query") query: String,
-        @Query("client_id") clientId: String,
-        id: String?
-
-    ): Call<ApiGood.Good>
-
-
 }

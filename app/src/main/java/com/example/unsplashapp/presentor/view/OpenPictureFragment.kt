@@ -9,36 +9,35 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.unsplashapp.R
 import com.example.unsplashapp.data.Result
+import com.example.unsplashapp.data.Urls
+import com.example.unsplashapp.data.UrlsX
 import com.example.unsplashapp.databinding.FragmentOpenPictureBinding
 
 
-class OpenPictureFragment(val urls: String) : Fragment(R.layout.fragment_open_picture), OpenPictureContract.View {
+class OpenPictureFragment() : Fragment(R.layout.fragment_open_picture) {
     private var _binding: FragmentOpenPictureBinding? = null
-    private val binding get() = _binding!!
-    private var count = 0
+    private val binding get() = _binding
+    private var result: Result? = null
 
-    private lateinit var presenter: OpenPicturesPresenter
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        presenter = OpenPicturesPresenter(this)
-
-        count = arguments?.getInt("number")!!
-        presenter.getPictures(arguments?.getString("key")!!)
-
-    }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         _binding = FragmentOpenPictureBinding.inflate(inflater, container, false)
-        val view = binding.root
+        val view = binding?.root
         return view
-
     }
 
-    override fun setData(result: Result) {
-        Glide.with(requireContext()).load(urls).centerCrop().into(binding.imageOpen)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        result = arguments?.getParcelable("key")
+
+        binding?.imageOpen?.let {
+            Glide.with(requireContext()).load(result?.urls).centerCrop()
+                .into(binding?.imageOpen!!)
+        }
     }
+
+
 }

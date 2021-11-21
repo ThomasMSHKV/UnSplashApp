@@ -29,15 +29,15 @@ class ApiRepository : CoroutineScope {
             ?.results
     }
 
-    fun getDataPic(id: String?) = async {
-        picturesApi.getPicId(
-            page = 1,
-            query = SearchFragment.just,
-            clientId = "DUBVa4jfDLSp5x-fltbelabCHZVE854DKQTyqlK6Pts",
-            id
-        )
-            .execute()
-            .body()
-            ?.result
-    }
+//    fun getDataPic(id: String?) = async {
+//        picturesApi.getPicId(
+//            page = 1,
+//            query = SearchFragment.just,
+//            clientId = "DUBVa4jfDLSp5x-fltbelabCHZVE854DKQTyqlK6Pts",
+//            id
+//        )
+//            .execute()
+//            .body()
+//            ?.result
+//    }
 }
